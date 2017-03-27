@@ -1,15 +1,13 @@
 <?php
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WelcomeController@index');
 
 Auth::routes();
 
 Route::get('/products', 'ProductsController@index');
-Route::get('/products/{product}', 'ProductsController@show');
 Route::get('/products/create', 'ProductsController@create');
+Route::get('/products/{product}', 'ProductsController@show');
 Route::post('/products', 'ProductsController@store');
 Route::post('/products/{product}/reviews', 'ReviewController@store');
 Auth::routes();

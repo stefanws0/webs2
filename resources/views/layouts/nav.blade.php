@@ -1,20 +1,30 @@
-
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse mb-4">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<nav class="navbar nav-tabs navbar-inverse bg-inverse  inline-block ">
     <a class="navbar-brand" href="/">RetroChic</a>
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/products">Products</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
-            </li>
-        </ul>
+    <ul>
+        @foreach($items as $item)
+            @if ($item->haschild)
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        {{ $item->title }} <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        @foreach($item->children as $child)
+                            <li class="nav-item">
+                                <a class="nav-link" href={{$child->link}}>{{ $child->title }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+            @else
+                @if($item->parent_id == null)
+                    <li class="nav-item active">
+                        <a class="nav-link" href={{$item->link}}>{{ $item->title }} <span class="sr-only">(current)</span></a>
+                    </li>
+                @endif
+            @endif
+        @endforeach
+    </ul>
     <ul class="nav navbar-nav navbar-right col-md-1">
         <!-- Authentication Links -->
         @if (Auth::guest())

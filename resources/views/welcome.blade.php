@@ -17,7 +17,7 @@
     <link href="css/carousel.css" rel="stylesheet">
 </head>
 <body>
-@include('layouts.nav')
+@include('layouts.nav', $items)
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">

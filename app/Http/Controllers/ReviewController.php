@@ -2,15 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use App\Review;
+use App\Models\Product;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
     public function store(Product $product)
     {
-        $product->addReview(request('body'), request('title'));
+        $this->validate(request(), [
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        auth()->user()->publishReview(
+            new Review([
+                'title' => request('title'),
+                'body' => request('body'),
+                'user_id' => auth()->id(),
+                'product_id' => $product->id
+            ]));
 
         return back();
     }

@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Models\Product;
+use App\Models\Navigation;
 
 class ProductsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
     {
         $products = Product::all();
-        return view('products.index', compact('products'));
+        $items = Navigation::all();
+        return view('products.index', compact('products'), compact('items'));
     }
 
     public function show(Product $product)
