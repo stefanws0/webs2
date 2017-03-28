@@ -15,7 +15,6 @@ class WelcomeController
 {
     public function index()
     {
-        $items = Navigation::all();
-        return view('welcome', compact('items'));
+        return view('welcome');
     }
 }

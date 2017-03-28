@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Navigation;
+use App\Models\Category;
 
 class ProductsController extends Controller
 {
@@ -14,9 +14,14 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $products = Product::all();
-        $items = Navigation::all();
-        return view('products.index', compact('products'), compact('items'));
+
+
+        if($category = request('category')){
+            $products = Product::where('category_id', $category)->get();
+        }else{
+            $products = Product::all();
+        }
+        return view('products.index', compact('products'));
     }
 
     public function show(Product $product)

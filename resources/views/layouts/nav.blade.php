@@ -9,9 +9,9 @@
                         {{ $item->title }} <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                        @foreach($item->children as $child)
+                        @foreach($item->categories as $child)
                             <li class="nav-item">
-                                <a class="nav-link" href={{$child->link}}>{{ $child->title }}</a>
+                                <a class="nav-link" href=/products/?category={{$child->id}}>{{ $child->name }}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -41,9 +41,15 @@
                 </a>
 
                 <ul class="dropdown-menu" role="menu">
+                    @if(Auth::user()->isAdmin)
+                        <li class="nav-item">
+                            <a href="/dashboard"> Dashboard</a>
+                        </li>
+                    @else
                     <li class="nav-item">
                         <a href="/"> Winkelwagen</a>
                     </li>
+                    @endif
                     <li>
                         <a href="{{ url('/logout') }}"
                            onclick="event.preventDefault();

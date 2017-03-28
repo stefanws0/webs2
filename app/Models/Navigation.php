@@ -14,15 +14,20 @@ class Navigation extends Model
 {
     protected $table = 'navigation';
 
-    public function parent() {
-
-        return $this->hasOne('navigation', 'id', 'parent_id');
-
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
     }
 
-    public function children() {
-
-        return $this->hasMany('App\Models\Navigation', 'parent_id', 'id');
-
-    }
+//    public function parent() {
+//
+//        return $this->hasOne('navigation', 'id', 'parent_id');
+//
+//    }
+//
+//    public function children() {
+//
+//        return $this->hasMany('App\Models\Navigation', 'parent_id', 'id');
+//
+//    }
 }

@@ -16,8 +16,15 @@ class CreateCategoryTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('navigation_id')->default(2);
             $table->timestamps();
         });
+
+        DB::table('categories')->insert([
+            ['name' => 'Shirt'],
+            ['name' => 'Pants'],
+            ['name' => 'Dress']
+        ]);
     }
 
     /**

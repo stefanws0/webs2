@@ -12,14 +12,11 @@
             </p>
         </div>
     </section>
-    <div class="jumbotron text-center">
-
-    </div>
     <div class="album text-muted">
         <div class="container">
             <div1 class="row">
                 @foreach ($products as $product)
-                    <div class="card">
+                    <div class="card col-md-4">
                         <p class="card-text text-center">{{ $product->name }}</p>
                         <a href="/products/{{$product->id}}" class="btn btn-primary pull-right">Go Here</a>
                     </div>

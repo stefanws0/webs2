@@ -1,6 +1,10 @@
 <?php
 
 
+View::creator('layouts.nav', function($view)
+{
+    $view->with('items', \App\Models\Navigation::all());
+});
 Route::get('/', 'WelcomeController@index');
 
 Auth::routes();

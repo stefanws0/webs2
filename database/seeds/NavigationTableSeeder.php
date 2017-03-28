@@ -23,19 +23,8 @@ class NavigationTableSeeder extends Seeder
         'title' => 'Contact',
         'link' => '/contact',
             'haschild' => false
-    ],[
-        'title' => 'Shirt',
-        'link' => '/products',
-            'haschild' => false
-    ], [
-        'title' => 'Pants',
-        'link' => '/products',
-            'haschild' => false
-    ],[
-        'title' => 'Dress',
-        'link' => '/products',
-            'haschild' => false
     ]];
+
         DB::table('navigation')->insert($data);
     }
 }

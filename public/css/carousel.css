@@ -8,12 +8,6 @@ body {
 .navbar {
     margin-bottom: 0;
 }
-nav ul li {
-    display: inline-block;
-    margin-right: -4px;
-    width: 25%;
-    height: 100%;
-}
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
