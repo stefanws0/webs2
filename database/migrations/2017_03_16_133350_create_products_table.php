@@ -21,6 +21,9 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        DB::statement("ALTER TABLE products ADD thumbnail LONGBLOB");
+
     }
 
     /**

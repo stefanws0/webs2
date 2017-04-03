@@ -1,31 +1,33 @@
-<nav class="navbar nav-tabs navbar-inverse bg-inverse  inline-block ">
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse  ">
     <a class="navbar-brand" href="/">RetroChic</a>
-    <ul>
-        @foreach($items as $item)
-            @if ($item->haschild)
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        {{ $item->title }} <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        @foreach($item->categories as $child)
-                            <li class="nav-item">
-                                <a class="nav-link" href=/products/?category={{$child->id}}>{{ $child->name }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </li>
-            @else
-                @if($item->parent_id == null)
-                    <li class="nav-item active">
-                        <a class="nav-link" href={{$item->link}}>{{ $item->title }} <span class="sr-only">(current)</span></a>
-                    </li>
-                @endif
-            @endif
-        @endforeach
-    </ul>
-    <ul class="nav navbar-nav navbar-right col-md-1">
+      <ul class="navbar-nav" >
+          @foreach($items as $item)
+              @if ($item->haschild)
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          {{ $item->title }} <span class="caret"></span>
+                        </a>
+
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          @foreach($item->categories as $child)
+                                  <a class="dropdown-item" href=/products/?category={{$child->id}}>{{ $child->name }}</a>
+                          @endforeach
+                        </div>
+                      </li>
+                  @else
+                  @if($item->parent_id == null)
+                      <li class="nav-item" >
+                          <a class="nav-link" href={{$item->link}}>{{ $item->title }} <span class="sr-only">(current)</span></a>
+                      </li>
+                  @endif
+              @endif
+          @endforeach
+      </ul>
+    </div>
+
+    <ul class="navbar-nav  col-md-2">
         <!-- Authentication Links -->
         @if (Auth::guest())
             <li class="nav-item">
@@ -35,23 +37,18 @@
                 <a class="nav-link" href="/register">Register</a>
             </li>
         @else
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
-
-                <ul class="dropdown-menu" role="menu">
+                <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                {{-- <ul class="dropdown-menu" role="menu"> --}}
                     @if(Auth::user()->isAdmin)
-                        <li class="nav-item">
-                            <a href="/dashboard"> Dashboard</a>
-                        </li>
+                        <a class="dropdown-item" href="/dashboard"> Dashboard</a>
                     @else
-                    <li class="nav-item">
-                        <a href="/"> Winkelwagen</a>
-                    </li>
+                        <a class="dropdown-item" href="shopping-cart"> Winkelwagen {{Session::has('cart') ? Session::get('cart')->totalQty : ''}}</a>
                     @endif
-                    <li>
-                        <a href="{{ url('/logout') }}"
+                        <a class="dropdown-item" href="{{ url('/logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             Uitloggen
@@ -60,9 +57,7 @@
                         <form id="logout-form" action="/logout" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    </li>
                 </ul>
-            </li>
-        @endif
+              @endif
     </ul>
 </nav>
