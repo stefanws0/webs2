@@ -6,7 +6,7 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-header">
-                      <a class="btn btn-success pull-right" role="button" href="dashboard/products/create">Product Aanmaken</a>
+                      <a class="btn btn-success pull-right" role="button" href="/dashboard/products/create">Product Aanmaken</a>
             </div>
             <div class="card-block">
               <table class="table table-hover">

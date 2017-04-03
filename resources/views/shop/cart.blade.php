@@ -19,8 +19,8 @@
                       Acties
                     </button>
                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                      <a class="dropdown-item" href="#">Verwijder product</a>
-                      <a class="dropdown-item" href="#">Verwijder alle producten</a>
+                      <a class="dropdown-item" href="{{route('products.reduceByOne', ['id' => $product['item']['id']])}}">Verwijder product</a>
+                      <a class="dropdown-item" href="{{route('products.removeAll', ['id' => $product['item']['id']])}}">Verwijder alle producten</a>
                     </div>
                   </div>
                 </li>

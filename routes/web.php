@@ -29,7 +29,14 @@ Route::get('/shopping-cart', [
   'as' => 'products.shoppingCart'
 ]);
 Route::get('/home', 'HomeController@index');
-
+Route::get('/reduce/{id}', [
+  'uses' => 'ProductsController@getReduceByOne',
+  'as' => 'products.reduceByOne'
+]);
+Route::get('/removetotalfromcart/{id}', [
+  'uses' => 'ProductsController@getRemoveItem',
+  'as' => 'products.removeAll'
+]);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', function ()    {

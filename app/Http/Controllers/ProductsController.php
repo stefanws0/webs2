@@ -60,6 +60,23 @@ class ProductsController extends Controller
         $request->session()->put('cart', $cart);
         return redirect()->route('index');
     }
+    public function getReducedByOne($id)
+    {
+      $oldCart = Session::has('cart') ? Session::get('cart') : null;
+      $cart = new Cart($oldCart);
+      $cart->reduceByOne($id);
+      Session::put('cart', $cart);
+      return redirect()->route('products.shoppingCart');
+    }
+    public function getRemoveItem($id)
+    {
+      $oldCart = Session::has('cart') ? Session::get('cart') : null;
+      $cart = new Cart($oldCart);
+      $cart-removeItem($id);
+      Session::put('cart', $cart);
+      return redirect()->route('products.shoppingCart');
+    }
+
     public function getCart()
     {
       if (!Session::has('cart')) {
