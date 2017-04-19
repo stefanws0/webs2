@@ -16,10 +16,14 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('price');
+            $table->integer('category_id');
             $table->text('description');
             $table->string('name');
             $table->timestamps();
         });
+
+        DB::statement("ALTER TABLE products ADD thumbnail LONGBLOB");
+
     }
 
     /**

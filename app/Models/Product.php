@@ -1,12 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
     protected $fillable = ['name', 'description', 'price'];
+
+    public function categories()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     public function reviews()
     {

@@ -18,7 +18,7 @@
                         <hr>
                         {{$review->body}}
                         <strong>
-                            {{$review->created_at->diffForHumans()}}
+                            {{$review->created_at->diffForHumans()}} by {{$review->user->name}}
                         </strong>
                     </li>
                     </div>
