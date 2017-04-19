@@ -36,4 +36,13 @@ class User extends Authenticatable
     {
         $this->reviews()->save($review);
     }
+
+    public function isAdmin()
+    {
+        if($this->isAdmin()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

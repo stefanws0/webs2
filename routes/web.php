@@ -16,9 +16,9 @@ Route::get('/', [
 Auth::routes();
 
 Route::get('/products', 'ProductsController@index');
-
 Route::get('/products/{product}', 'ProductsController@show');
 Route::post('/products', 'ProductsController@store');
+Route::delete('/products/destroy/{product}', 'ProductsController@destroy')->name('products.destroy');
 Route::post('/products/{product}/reviews', 'ReviewController@store');
 Route::get('/add-to-cart/{id}', [
   'uses' => 'ProductsController@getAddToCart',

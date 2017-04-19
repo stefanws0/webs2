@@ -65,4 +65,11 @@ class ProductsController extends Controller
         return redirect()->route('posts.show', $product);
     }
 
+    public function destroy(Product $product)
+    {
+        $product->delete();
+
+
+    }
+
 }
