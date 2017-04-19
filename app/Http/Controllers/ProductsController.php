@@ -11,15 +11,19 @@ use Session;
 
 class ProductsController extends Controller
 {
+
+    /**
+    * ProductController constructor.
+    */
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('auth', [
+            'only' => ['create', 'store', 'edit', 'update']
+        ]);
     }
 
     public function index()
     {
-
-
         if($category = request('category')){
             $products = Product::where('category_id', $category)->get();
             $categoryName = Category::where('id', $category)->value('name');
@@ -29,9 +33,16 @@ class ProductsController extends Controller
         return view('products.index', compact(['products', 'categoryName' ]));
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Product  $product
+     * @return \Illuminate\Http\Response
+     */
     public function show(Product $product)
     {
-        return view('products.show', compact('product'));
+        $reviews = $product->reviews()->latest()->get();
+        return view('products.show', compact('product', 'reviews'));
     }
 
     public function create()
@@ -46,17 +57,11 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(StoreRequest $request)
     {
-        $this->validate(request(), [
-            'name' => 'required|max:20',
-            'description' => 'required|max:50',
-            'price' => 'required|max:6'
-        ]);
+        $product = $request->persist();
 
-        Product::create(request(['name', 'description', 'price']));
-
-        return redirect('/products');
+        return redirect()->route('posts.show', $product);
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Product\Requests;
+namespace App\Http\Requests\Product;
 
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
@@ -25,22 +25,17 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:2|max:140',
-            'cover' => 'image|max:5000',
-            'body' => 'required',
+            'name' => 'required|max:20',
+            'description' => 'required|max:50',
+            'price' => 'required|max:6'
         ];
     }
 
     public function persist()
     {
-        $post = $this->products()->create($this->only('title', 'body'));
+        $product = $this->products()->create($this->only('name', 'description', 'price'));
 
-        if ($this->get('_action') == 'Opslaan als concept') {
-            $post->update([
-                'drafted_at' => Carbon::now(),
-            ]);
-        }
 
-        return $post;
+        return $product;
     }
 }
