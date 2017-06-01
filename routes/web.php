@@ -5,7 +5,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
-Route::get('/products', 'ProductsController@index');
+Route::get('/products', 'ProductsController@index')->name('products.index');
 Route::get('/products/{product}', 'ProductsController@show');
 Route::get('/products/create', 'ProductsController@create');
 Route::post('/products', 'ProductsController@store');

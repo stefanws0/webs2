@@ -27,6 +27,41 @@
                                 class="sr-only">(current)</span></a>
                 </li>
             @endif
+                @if(Auth::user())
+
+                    <li>
+                        <div class="dropdown">
+                            <a class="nav-item white sliding-middle-out" style="color: white" data-toggle="dropdown">{{Auth::user()->name}}<span
+                                        class="caret"></span></a>
+                            <ul class="dropdown-menu">
+
+                                <li><a class="sliding-middle-out" href="{{ route('products.index') }}"> Mijn Blog Posts</a>
+                                </li>
+                                <li><a class="sliding-middle-out" href="{{ route('products.index') }}"> Mijn Account</a>
+                                </li>
+
+                                @if (Auth::user()->isAdmin())
+                                    <li><a class="sliding-middle-out">
+                                            Dashboard</a></li>
+
+                                @endif
+                                <li>
+                                    <a class="sliding-middle-out" href="{{ url('/logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Uitloggen
+                                    </a>
+
+                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                                          style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                @endif
         </form>
     </div>
 </nav>

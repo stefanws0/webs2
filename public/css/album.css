@@ -8,7 +8,9 @@ body {
 .totheright{
     text-align:right;
 }
-
+.white{
+    color: white; !important;
+}
 .jumbotron {
     padding-top: 6rem;
     padding-bottom: 6rem;
