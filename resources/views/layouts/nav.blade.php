@@ -17,8 +17,16 @@
             </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
-            <button class="btn btn-primary my-2 my-sm-0"  type="submit">Register</button>
-            <button class="btn btn-default my-2 my-sm-0" type="submit">Log in</button>
+            @if (Auth::guest())
+                <li>
+                    <a class="btn btn-default my-2 my-sm-0" href="{{ url('/login') }}">Login <span
+                                class="sr-only">(current)</span></a>
+                </li>
+                <li>
+                    <a class="btn btn-primary my-2 my-sm-0" href="{{ url('/register') }}">Register <span
+                                class="sr-only">(current)</span></a>
+                </li>
+            @endif
         </form>
     </div>
 </nav>
