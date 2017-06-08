@@ -13,7 +13,7 @@
                 <a class="nav-link" href="/products">Products</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="/contact">Contact</a>
             </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
