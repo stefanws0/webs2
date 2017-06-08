@@ -4,9 +4,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/products', 'ProductsController@index');
+Auth::routes();
+Route::get('/products', 'ProductsController@index')->name('products.index');
 Route::get('/products/{product}', 'ProductsController@show');
 Route::get('/products/create', 'ProductsController@create');
 Route::post('/products', 'ProductsController@store');
 Route::post('/products/{product}/reviews', 'ReviewController@store');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/contact', 'ContactController@index')->name('contact.index');

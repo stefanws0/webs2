@@ -1,7 +1,6 @@
 @include('layouts.layout')
 
 @section('content')
-    asdasdasd
     <div class="container">
 
         <form class="form-signin">
