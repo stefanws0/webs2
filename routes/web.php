@@ -11,6 +11,7 @@ Route::group(['prefix' => 'dashboard'], function() {
     Route::get('/users', 'Dashboard\UserController@index')->name('dashboard.users');
     Route::get('/{user}/edit', 'Dashboard\UserController@edit')->name('users.edit');
     Route::put('/{user}', 'Dashboard\UserController@update')->name('users.update');
+    Route::delete('/{user}/delete', 'Dashboard\UserController@destroy')->name('users.destroy');
 });
 Route::get('/products', 'ProductsController@index')->name('products.index');
 Route::get('/products/{product}', 'ProductsController@show');

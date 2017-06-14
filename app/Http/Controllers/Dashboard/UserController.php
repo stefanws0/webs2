@@ -52,4 +52,10 @@ class UserController extends Controller
 
         return redirect()->route('dashboard.users');
     }
+
+    public function delete(User $user){
+        $user->delete();
+        $users = User::orderBy('name')->paginate(15);
+        return view('dashboard.users', compact('users'));
+    }
 }

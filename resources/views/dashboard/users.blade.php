@@ -3,7 +3,6 @@
 @section('page_heading', 'Gebruikers')
 
 @section('section')
-    {{dd($users)}}
     <div class="row">
         <div class="col-sm-6">
             @section ('cotable_panel_title','Gebruikers beheren')
@@ -28,12 +27,6 @@
                             Naam
                         </th>
                         <th>
-                            Blog posts
-                        </th>
-                        <th>
-                            Comments
-                        </th>
-                        <th>
                             Actie
                         </th>
                     </tr>
@@ -43,13 +36,10 @@
                                 {{ $user->name }}
                             </td>
                             <td>
-                                {{ $user->posts->count() }}
-                            </td>
-                            <td>
-                                {{ $user->comments->count() }}
-                            </td>
-                            <td>
                                 <a href="{{ route('users.edit', $user) }}">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                                <a href="{{ route('users.destroy', $user) }}">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
                             </td>
