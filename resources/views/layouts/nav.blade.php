@@ -16,7 +16,7 @@
                 <a class="nav-link" href="/contact">Contact</a>
             </li>
         </ul>
-        <form class="form-inline mt-2 mt-md-0">
+        <form class="form-inline ">
             @if (Auth::guest())
                 <li>
                     <a class="btn btn-default my-2 my-sm-0" href="{{ url('/login') }}">Login <span
@@ -41,7 +41,7 @@
                                 </li>
 
                                 @if (Auth::user()->isAdmin())
-                                    <li><a class="sliding-middle-out">
+                                    <li><a class="sliding-middle-out" href="{{ url('/dashboard') }}">
                                             Dashboard</a></li>
 
                                 @endif

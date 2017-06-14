@@ -3,8 +3,8 @@
 
 @section('content')
 
-
-    <div class="col-12 col-lg-8">
+    <link href="css/contact.css" rel="stylesheet">
+    <div class="col-12">
 
         <div class="panel">
             <div class="panel-heading">

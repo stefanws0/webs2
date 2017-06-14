@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ContactConfirmation;
 use Illuminate\Http\Request;
 use App\Notifications\ContactNotification;
-use App\User;
+use App\Models\User;
 use Mail;
 use Notification;
 
