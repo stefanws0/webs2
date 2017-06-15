@@ -8,7 +8,12 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        if($category = request('category'))
+        {
+            $products = Product::where('category_id', $category)->get();
+        }else{
+            $products = Product::all();
+        }
         return view('products.index', compact('products'));
     }
 
@@ -33,5 +38,10 @@ class ProductsController extends Controller
         Product::create(request(['name', 'description', 'price']));
 
         return redirect('/products');
+    }
+
+    public function getAddToCart(Request $request, Product $product)
+    {
+        $product
     }
 }

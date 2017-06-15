@@ -24,7 +24,15 @@ Route::group(['prefix' => 'dashboard'], function() {
     Route::delete('/products/{product}/delete', 'Dashboard\ProductController@destroy')->name('dashboard.products.destroy');
     Route::get('/product/create', 'Dashboard\ProductController@create')->name('dashboard.products.create');
     Route::post('/product/store', 'Dashboard\ProductController@store')->name('dashboard.products.store');
+    Route::get('/categories', 'Dashboard\CategoryController@index')->name('dashboard.categories');
+    Route::get('/categories/{category}/edit', 'Dashboard\CategoryController@edit')->name('dashboard.categories.edit');
+    Route::put('/category/{category}/update', 'Dashboard\CategoryController@update')->name('dashboard.categories.update');
+    Route::delete('/categories/{category}/delete', 'Dashboard\CategoryController@destroy')->name('dashboard.categories.destroy');
+    Route::get('/category/create', 'Dashboard\CategoryController@create')->name('dashboard.categories.create');
+    Route::post('/category/store', 'Dashboard\CategoryController@store')->name('dashboard.categories.store');
+
 });
+Route::get('/add-to-cart/{product}', 'ProductController@getAddToCart')->name('product.addToCart');
 Route::get('/products', 'ProductsController@index')->name('products.index');
 Route::get('/products/{product}', 'ProductsController@show');
 Route::get('/products/create', 'ProductsController@create');

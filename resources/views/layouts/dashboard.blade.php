@@ -261,6 +261,9 @@
                         <li {{ (request()->is('*products') ? 'class="active"' : '') }}>
                             <a href="{{ route('dashboard.products') }}"><i class="glyphicon glyphicon-th-list"></i> Products</a>
                         </li>
+                        <li {{ (request()->is('*categories') ? 'class="active"' : '') }}>
+                            <a href="{{ route('dashboard.categories') }}"><i class="glyphicon glyphicon-th-list"></i> Categories</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
