@@ -6,11 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'description', 'price'];
+    protected $fillable = ['name', 'description', 'price', 'category_id'];
 
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function foo()
+    {
+        return $this->belongsTo('App\Models\Category','category_id');
     }
 
     public function addReview($body, $title)

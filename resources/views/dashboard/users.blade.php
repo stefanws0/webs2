@@ -40,7 +40,7 @@
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
                                 <a href="{{ route('dashboard.users.destroy', $user) }}">
-                                    <span class="glyphicon glyphicon-pencil"></span>
+                                    <span class="glyphicon glyphicon-remove"></span>
                                 </a>
                             </td>
                         </tr>

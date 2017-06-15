@@ -4,17 +4,16 @@
 
 @section('section')
     <div class="row">
-        <div class="col-sm-6">
-            @section ('cotable_panel_title','Producten aanpassen')
+        <div class="col-sm-8">
+            @section ('cotable_panel_title','Maak Product')
             @section ('cotable_panel_body')
-
-                <form action="{{ route('dashboard.products.update', $product) }}" method="post">
-                    {{ method_field('PUT') }}
+                <form action="{{ route('dashboard.products.store') }}" method="post">
                     {{ csrf_field() }}
 
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label for="name">Titel</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $product->name) }}">
+                        <input type="text" class="form-control" id="name" name="name"
+                               value="{{ old('name') }}" required>
 
                         @if ($errors->has('name'))
                             <p class="help-block">
@@ -26,7 +25,7 @@
                     <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                         <label for="description">Descriptie</label>
                         <textarea name="description" class="form-control" id="description" cols="30"
-                                  rows="10">{{ old('description', $product->description) }}</textarea>
+                                  rows="10" required>{{ old('description') }}</textarea>
 
                         @if ($errors->has('description'))
                             <p class="help-block">
@@ -41,7 +40,7 @@
                         @if ($categories->count())
 
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}" {{ $selectedCategory == $category->id ? 'selected="selected"' : '' }}>{{ $category->name }}</option>
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         @endif
                     </select>
@@ -57,8 +56,7 @@
                             </p>
                         @endif
                     </div>
-
-                    <button type="submit" class="btn btn-primary">Wijzig</button>
+                    <button type="submit" class="btn btn-primary">Aanmaken</button>
                 </form>
             @endsection
             @include('widgets.panel', array('header'=>true, 'as'=>'cotable'))

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Requests\User\UpdateRequest;
+use App\Http\Requests\Product\UpdateRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
@@ -28,6 +29,25 @@ class ProductController extends Controller
         return view('dashboard.products', compact('products'));
     }
 
+
+    public function create()
+    {
+        $categories = Category::all();
+        return view('dashboard.product.create', compact('categories'));
+    }
+
+    public function store()
+    {
+            Product::create([
+                'name' => request('name'),
+                'description' => request('description'),
+                'price' => request('price'),
+                'category_id' => request('category_id')
+            ]);
+
+        return redirect()->route('dashboard.products');
+    }
+
     /**
      * Edit the given products.
      *
@@ -36,7 +56,9 @@ class ProductController extends Controller
      */
     public function edit(Product  $product)
     {
-        return view('dashboard.product.edit', compact('product'));
+        $categories = Category::all();
+        $selectedCategory = $product->category_id;
+        return view('dashboard.product.edit', compact('product', 'categories', 'selectedCategory'));
     }
 
     /**

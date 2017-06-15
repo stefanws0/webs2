@@ -21,13 +21,15 @@
                         </div>
                     </div>
                 </div>
+                <a href="{{ route('dashboard.products.create') }}" class="btn- btn-link">Maak een product</a>
+                <br>
                 <table class="table">
                     <tr>
                         <th>
                             Naam
                         </th>
                         <th>
-                            Descriptie
+                            Categorie
                         </th>
                         <th>
                             Prijs
@@ -42,7 +44,7 @@
                                 {{ $product->name }}
                             </td>
                             <td>
-                                {{ $product->description }}
+                                {{ $product->foo->name }}
                             </td>
                             <td>
                                 {{ $product->price }}
