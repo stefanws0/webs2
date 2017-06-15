@@ -3,13 +3,12 @@
 @section('page_heading', 'Gebruikers')
 
 @section('section')
-    <script src="/js/blockuser.js"></script>
     <div class="row">
         <div class="col-sm-6">
             @section ('cotable_panel_title','Gebruikers aanpassen')
             @section ('cotable_panel_body')
 
-                <form action="{{ route('users.update', $user) }}" method="post">
+                <form action="{{ route('dashboard.users.update', $user) }}" method="post">
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
 
@@ -32,18 +31,18 @@
                         @endif
                     </div>
 
-                    <div class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('isAdmin') ? ' has-error' : '' }}">
                         <div class="checkbox">
                             <label>
-                                <input type="hidden" name="role_id" value="0">
-                                <input type="checkbox" name="role_id" value="1"
-                                        {{ old('role_id', $user->role_id) ? ' checked' : '' }}>
+                                <input type="hidden" name="isAdmin" value="0">
+                                <input type="checkbox" name="isAdmin" value="1"
+                                        {{ old('isAdmin', $user->role_id) ? ' checked' : '' }}>
                                 Administrator
                             </label>
                         </div>
 
-                        @if ($errors->has('role_id'))
-                            <p class="help-block">{{ $errors->first('role_id') }}</p>
+                        @if ($errors->has('isAdmin'))
+                            <p class="help-block">{{ $errors->first('isAdmin') }}</p>
                         @endif
                     </div>
 

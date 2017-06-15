@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 class UpdateRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Determine if the product is authorized to make this request.
      *
      * @return bool
      */
@@ -26,21 +26,18 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|min:2|max:100',
-            'email' => [
-                'required',
-                Rule::unique('users', 'email')->ignore($this->route('user')->id)
-            ],
-            'isAdmin' => 'required|boolean'
+            'description' => 'required|min:20|max:100',
+            'price' => 'required|integer|min:1'
         ];
     }
 
     /**
-     * Update the user.
+     * Update the product.
      */
     public function persist()
     {
-        $user = $this->route('user');
+        $user = $this->route('product');
 
-        $user->update($this->only('name', 'email', 'isAdmin'));
+        $user->update($this->only('name', 'description', 'price'));
     }
 }

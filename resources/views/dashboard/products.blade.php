@@ -1,16 +1,16 @@
 @extends('layouts.dashboard')
 
-@section('page_heading', 'Gebruikers')
+@section('page_heading', 'Producten')
 
 @section('section')
     <div class="row">
         <div class="col-sm-6">
-            @section ('cotable_panel_title','Gebruikers beheren')
+            @section ('cotable_panel_title','Producten beheren')
             @section ('cotable_panel_body')
                 <div class="row" style="margin-bottom: 2%;">
                     <div class="col-sm-6 col-sm-offset-3">
                         <div id="imaginary_container">
-                            <form action="{{ route('dashboard.users') }}" method="get">
+                            <form action="{{ route('dashboard.products') }}" method="get">
                                 <div class="input-group">
                                     <input type="text" name="q" class="form-control" placeholder="Zoeken" value="{{ request('q') }}">
                                     <span class="input-group-btn">
@@ -27,26 +27,38 @@
                             Naam
                         </th>
                         <th>
+                            Descriptie
+                        </th>
+                        <th>
+                            Prijs
+                        </th>
+                        <th>
                             Actie
                         </th>
                     </tr>
-                    @foreach($users as $user)
+                    @foreach($products as $product)
                         <tr>
                             <td>
-                                {{ $user->name }}
+                                {{ $product->name }}
                             </td>
                             <td>
-                                <a href="{{ route('dashboard.users.edit', $user) }}">
+                                {{ $product->description }}
+                            </td>
+                            <td>
+                                {{ $product->price }}
+                            </td>
+                            <td>
+                                <a href="{{ route('dashboard.products.edit', $product) }}">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
-                                <a href="{{ route('dashboard.users.destroy', $user) }}">
-                                    <span class="glyphicon glyphicon-pencil"></span>
+                                <a href="{{ route('dashboard.products.destroy', $product) }}">
+                                    <span class="glyphicon glyphicon-remove"></span>
                                 </a>
                             </td>
                         </tr>
                     @endforeach
                 </table>
-                {{ $users->appends(['q' => request('q')])->links() }}
+                {{ $products->appends(['q' => request('q')])->links() }}
 
                 <p>
                     <a href="{{ route('dashboard.index') }}" class="btn btn-default">

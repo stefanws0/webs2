@@ -241,7 +241,7 @@
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
+                                    <i class="glyphicon glyphicon-search"></i>
                                 </button>
                             </span>
                             </div>
@@ -256,7 +256,10 @@
                         </li>
                         </li>
                         <li {{ (request()->is('*users') ? 'class="active"' : '') }}>
-                            <a href="{{ route('dashboard.users') }}"><i class="fa fa-users fa-fw"></i> Users</a>
+                            <a href="{{ route('dashboard.users') }}"><i class="glyphicon glyphicon-user"></i> Users</a>
+                        </li>
+                        <li {{ (request()->is('*products') ? 'class="active"' : '') }}>
+                            <a href="{{ route('dashboard.products') }}"><i class="glyphicon glyphicon-th-list"></i> Products</a>
                         </li>
                     </ul>
                 </div>
