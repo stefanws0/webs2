@@ -32,11 +32,14 @@ Route::group(['prefix' => 'dashboard'], function() {
     Route::post('/category/store', 'Dashboard\CategoryController@store')->name('dashboard.categories.store');
 
 });
-Route::get('/add-to-cart/{product}', 'ProductController@getAddToCart')->name('product.addToCart');
-Route::get('/products', 'ProductsController@index')->name('products.index');
+Route::get('/add-to-cart/{id}', 'ProductsController@getAddToCart')->name('products.addToCart');
+Route::get('/reduce/{id}', 'ProductsController@getReduceByOne')->name('products.reduceByOne');
+Route::get('/removetotalfromcart/{id}', 'ProductsController@getRemoveItem')->name('products.removeAll');
+Route::get('/shopping-cart', 'ProductsController@getCart')->name('products.shoppingCart');
+Route::get('/products/', 'ProductsController@index')->name('products.index');
 Route::get('/products/{product}', 'ProductsController@show');
 Route::get('/products/create', 'ProductsController@create');
-Route::post('/products', 'ProductsController@store');
+Route::post('/products/', 'ProductsController@store');
 Route::post('/products/{product}/reviews', 'ReviewController@store');
 Auth::routes();
 

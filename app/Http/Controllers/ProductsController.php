@@ -3,18 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use Session;
+use App\Models\Cart;
 
 class ProductsController extends Controller
 {
     public function index()
     {
-        if($category = request('category'))
-        {
+        if($category = request('category')){
             $products = Product::where('category_id', $category)->get();
+            $categoryName = Category::where('id', $category)->value('name');
         }else{
             $products = Product::all();
         }
-        return view('products.index', compact('products'));
+        return view('products.index', compact(['products', 'categoryName' ]));
     }
 
     public function show(Product $product)
@@ -46,9 +51,9 @@ class ProductsController extends Controller
         $cart = new Cart($oldCart);
         $cart->add($product, $product->id);
         $request->session()->put('cart', $cart);
-        return redirect()->route('index');
+        return redirect()->route('products.index');
     }
-    public function getReducedByOne($id)
+    public function getReduceByOne($id)
     {
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
