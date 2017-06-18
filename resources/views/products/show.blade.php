@@ -2,9 +2,12 @@
 
 @section('content')
     <div class="container">
-        <h1>{{ $product->name }}</h1>
+        <h4>{{$product->foo->name . " > " . $product->name }}</h4>
         <hr>
-        <p>{{ $product->description }}</p>
+        <p>
+            <h4>{{ $product->name }}</h4>
+            <h6>{{ $product->description }}</h6>
+        </p>
         <p>Dit product kost: €{{ $product->price }},-
             <button type="submit" class="btn btn-primary pull-right">Buy</button>
         </p>

@@ -11,8 +11,14 @@
                 @endif</h1>
             <p class="lead text-muted">These are the products our webshop is going to sell</p>
             <p>
-                <a href="#" class="btn btn-primary"></a>
-                <a href="#" class="btn btn-secondary">Somekind of action</a>
+            <form action="{{ route('products.index') }}" method="get">
+                <div class="input-group">
+                    <input type="text" style="margin: 0px;" name="q" class="form-control" placeholder="Zoeken" value="{{ request('q') }}">
+                    <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">Zoek</button>
+                            </span>
+                </div>
+            </form>
             </p>
         </div>
     </section>
@@ -25,11 +31,11 @@
                             <div class="card mb-3">
                                 <div class="card-header">
                                     <div class="pull-right">
-                                        ${{$product->price}}
+                                        {{$product->name}}
                                     </div>
                                 </div>
                                 <div class="card-block">
-                                    <h4 class="card-title">{{$product->name}}</h4>
+                                    <img style="height: 100px" src="{{asset("storage/$product->id.jpeg")}}" />
                                     <p></p>
 
                                     <p class="card-text text-center">{{ $product->description }}</p>
@@ -42,6 +48,7 @@
                                     <a href="/products/{{$product->id}}" class="btn btn-primary pull-left">
 
                                         <i class="glyphicon glyphicon-info-sign" aria-hidden="true">
+                                            Info
                                         </i>
                                     </a>
                                     <a href="{{route('products.addToCart',['id' => $product->id])}}" class="btn btn-success pull-right">

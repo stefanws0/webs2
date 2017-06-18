@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -36,14 +37,16 @@ class ProductController extends Controller
         return view('dashboard.product.create', compact('categories'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
-            Product::create([
+            $product = Product::create([
                 'name' => request('name'),
                 'description' => request('description'),
                 'price' => request('price'),
                 'category_id' => request('category_id')
             ]);
+            Storage::put($product->id . '.jpg', file_get_contents(request('image')->getRealPath()));
+
 
         return redirect()->route('dashboard.products');
     }

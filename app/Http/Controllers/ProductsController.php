@@ -13,14 +13,19 @@ use App\Models\Cart;
 
 class ProductsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        if($category = request('category')){
+        if ($request->has('q')) {
+            $query = $request->get('q');
+
+            $products = Product::where('name', 'like', '%'.$query.'%')->get();
+        }else if($category = request('category')){
             $products = Product::where('category_id', $category)->get();
             $categoryName = Category::where('id', $category)->value('name');
         }else{
             $products = Product::all();
         }
+
         return view('products.index', compact(['products', 'categoryName' ]));
     }
 

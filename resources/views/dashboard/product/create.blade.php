@@ -7,7 +7,7 @@
         <div class="col-sm-8">
             @section ('cotable_panel_title','Maak Product')
             @section ('cotable_panel_body')
-                <form action="{{ route('dashboard.products.store') }}" method="post">
+                <form action="{{ route('dashboard.products.store') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -30,6 +30,17 @@
                         @if ($errors->has('description'))
                             <p class="help-block">
                                 <strong>{{ $errors->first('description') }}</strong>
+                            </p>
+                        @endif
+                    </div>
+                    <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+                        <label for="image">Foto</label>
+                        <input type="file" class="form-control" id="image" name="image"
+                               value="{{ old('image') }}" required>
+
+                        @if ($errors->has('image'))
+                            <p class="help-block">
+                                <strong>{{ $errors->first('image') }}</strong>
                             </p>
                         @endif
                     </div>
