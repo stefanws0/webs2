@@ -36,8 +36,12 @@
 
                                 </div>
                                 <div class="card-footer">
+                                    <div class="pull-left visible-lg-inline-block">
+                                        ${{$product->price}}
+                                    </div>
                                     <a href="/products/{{$product->id}}" class="btn btn-primary pull-left">
-                                        <i class="fa fa-info" aria-hidden="true">
+
+                                        <i class="glyphicon glyphicon-info-sign" aria-hidden="true">
                                         </i>
                                     </a>
                                     <a href="{{route('products.addToCart',['id' => $product->id])}}" class="btn btn-success pull-right">

@@ -53,9 +53,20 @@
                                 <a href="{{ route('dashboard.products.edit', $product) }}">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
-                                <a href="{{ route('dashboard.products.destroy', $product) }}">
-                                    <span class="glyphicon glyphicon-remove"></span>
+                                <a href="{{ route('dashboard.products.destroy', $product) }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('delete-product').submit();">
+                                            <span class="glyphicon glyphicon-trash text-danger"
+                                                  aria-hidden="true"></span>
                                 </a>
+
+                                <form id="delete-product" action="{{ route('dashboard.products.destroy', $product) }}"
+                                      method="POST">
+
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                                </form>
+
                             </td>
                         </tr>
                     @endforeach

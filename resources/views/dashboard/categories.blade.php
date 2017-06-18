@@ -40,9 +40,19 @@
                                 <a href="{{ route('dashboard.categories.edit', $category) }}">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
-                                <a href="{{ route('dashboard.categories.destroy', $category) }}">
-                                    <span class="glyphicon glyphicon-remove"></span>
+                                <a href="{{ route('dashboard.categories.destroy', $category) }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('delete-category').submit();">
+                                            <span class="glyphicon glyphicon-trash text-danger"
+                                                  aria-hidden="true"></span>
                                 </a>
+
+                                <form id="delete-category" action="{{ route('dashboard.categories.destroy', $category) }}"
+                                      method="POST">
+
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                                </form>
                             </td>
                         </tr>
                     @endforeach

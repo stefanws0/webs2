@@ -36,7 +36,7 @@
                 <hr>
                 <div class="row">
                     <div class="col-md-12">
-                        <button type="button" class="btn btn-success pull-right">Betalen</button>
+                        <a href="{{ route('checkout')}}" type="button" class="btn btn-success pull-right">Betalen</a>
                     </div>
                 </div>
 

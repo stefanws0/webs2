@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Auth;
 use Session;
 use App\Models\Cart;
 
@@ -59,14 +61,18 @@ class ProductsController extends Controller
         $cart = new Cart($oldCart);
         $cart->reduceByOne($id);
         Session::put('cart', $cart);
+        if($cart->totalPrice == 0){
+            Session::forget('cart');
+        }
         return redirect()->route('products.shoppingCart');
     }
     public function getRemoveItem($id)
     {
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        $cart-removeItem($id);
+        $cart->removeItem($id);
         Session::put('cart', $cart);
+        Session::forget('cart');
         return redirect()->route('products.shoppingCart');
     }
 
@@ -79,5 +85,22 @@ class ProductsController extends Controller
         $cart = new Cart($oldCart);
         return view('shop.cart', ['products' => $cart->items,
             'totalPrice' => $cart->totalPrice]);
+    }
+
+    public function getCheckout()
+    {
+        if (!Session::has('cart')) {
+            return view('shop.cart', ['products' => null]);
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $total = $cart->totalPrice;
+        $order = new Order();
+        $order->cart = serialize($cart);
+        $order->totalPrice = $total;
+
+        Auth::user()->orders()->save($order);
+        Session::forget('cart');
+        return redirect()->route('products.index');
     }
 }

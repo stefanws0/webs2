@@ -23,7 +23,7 @@ class Cart
         $storedItem = ['qty' => 0, 'price'=> $item->price, 'item' => $item];
         if ($this->items) {
             if (array_key_exists($id, $this->items)) {
-                $storedItems = $this->items[$id];
+                $storedItem = $this->items[$id];
             }
         }
         $storedItem['qty']++;
@@ -47,7 +47,7 @@ class Cart
     public function removeItem($id)
     {
 
-        $this->totalQty -= $this->$items[$id]['qty'];
+        $this->totalQty -= $this->items[$id]['qty'];
         $this->totalPrice -= $this->items[$id]['price'];
         unset($this->items[$id]);
     }
