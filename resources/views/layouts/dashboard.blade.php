@@ -35,13 +35,13 @@
                         </li>
                         </li>
                         <li {{ (request()->is('*users') ? 'class="active"' : '') }}>
-                            <a href="{{ route('dashboard.users') }}"><i class="glyphicon glyphicon-user"></i> Users</a>
+                            <a href="{{ route('users.index') }}"><i class="glyphicon glyphicon-user"></i> Users</a>
                         </li>
                         <li {{ (request()->is('*products') ? 'class="active"' : '') }}>
-                            <a href="{{ route('dashboard.products') }}"><i class="glyphicon glyphicon-th-list"></i> Products</a>
+                            <a href="{{ route('products.index') }}"><i class="glyphicon glyphicon-th-list"></i> Products</a>
                         </li>
                         <li {{ (request()->is('*categories') ? 'class="active"' : '') }}>
-                            <a href="{{ route('dashboard.categories') }}"><i class="glyphicon glyphicon-sort"></i> Categories</a>
+                            <a href="{{ route('categories.index') }}"><i class="glyphicon glyphicon-sort"></i> Categories</a>
                         </li>
                         <li {{ (request()->is('*orders') ? 'class="active"' : '') }}>
                             <a href="{{ route('dashboard.orders') }}"><i class="glyphicon glyphicon-check"></i> Orders</a>

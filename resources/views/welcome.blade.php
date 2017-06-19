@@ -76,7 +76,6 @@
             <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
             <h2>Stefan Willems</h2>
             <p>Ik ben Stefan Willems en ik ben een informatica student aan de Avans Den Bosch</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-2 ">
         </div>
@@ -84,7 +83,6 @@
             <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
             <h2>Jonathan Hollander</h2>
             <p>Ik ben Jonathan Hollander en ik ben een informatica student aan de Avans Den Bosch</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
