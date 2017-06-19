@@ -9,20 +9,29 @@
         <div class="panel">
             <div class="panel-heading">
                 <h3 class="text-center">
-                            <address>
-                                <h3><strong>RetroChic</strong></h3>
-                                <h4>Markt 12<br>
-                                    5995 CB Kessel</h4><br>
-                                <h5><strong>Co-Founder Stefan Willems</strong></h5>
-                                <h6>stefankessel@hotmail.com<br>
-                                    +31 631 962 291</h6><br>
-                                <h5><strong>Co-Founder Jonathan Hollander</strong></h5>
-                                <h6>idk<br>
-                                    idk</h6><br>
-                            </address><br>
+                    <div class="row m5">
+                        <div class="col-12">
+                        <h3><strong>RetroChic</strong></h3>
+                        <h4>Markt 12<br>
+                            5995 CB Kessel</h4><br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <h5><strong>Founder Stefan Willems</strong></h5>
+                            <h6>stefankessel@hotmail.com<br>
+                                +31 631 962 291</h6>
+                            <br>
+                        </div>
+                        <div class="col-6">
+                            <h5><strong>Co-Founder Jonathan Hollander</strong></h5>
+                            <h6>Jahollan@avans.nl<br>
+                                +31 612 145 678</h6><br>
+                        </div>
+                        <br>
 
-                    <i class="icon-envelope main-color"></i>
-                    Nog vragen? Stuur ze gerust
+                        <i class="icon-envelope main-color"></i>
+                        Nog vragen? Stuur ze gerust
+                    </div>
                 </h3>
             </div>
             <div class="panel-body">
@@ -32,7 +41,8 @@
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <div class="ccfield-prepend">
                             <span class="ccform-addon"><i class="fa fa-user fa-2x"></i></span>
-                            <input type="text" class="ccformfield" id="name" placeholder="Volledige naam" name="name"
+                            <input type="text" class="ccformfield" id="name" placeholder="Volledige naam"
+                                   name="name"
                                    value="{{ old('name') }}" required>
                         </div>
                         @if ($errors->has('name'))
@@ -44,7 +54,8 @@
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                         <div class="ccfield-prepend">
                             <span class="ccform-addon"><i class="fa fa-envelope fa-2x"></i></span>
-                            <input type="text" class="ccformfield" id="email" placeholder="Email" name="email"
+                            <input type="text" class="ccformfield" id="email" placeholder="Email"
+                                   name="email"
                                    value="{{ old('email') }}" required>
                         </div>
                         @if ($errors->has('email'))
@@ -55,8 +66,10 @@
                     </div>
                     <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                         <div class="ccfield-prepend">
-                            <span class="ccform-addon"><i class="glyphicon glyphicon-phone fa-2x"></i></span>
-                            <input type="text" class="ccformfield" id="phone" placeholder="Telefoonnummer" name="phone"
+                                        <span class="ccform-addon"><i
+                                                    class="glyphicon glyphicon-phone fa-2x"></i></span>
+                            <input type="text" class="ccformfield" id="phone" placeholder="Telefoonnummer"
+                                   name="phone"
                                    value="{{ old('phone') }}" required>
                         </div>
                         @if ($errors->has('phone'))
@@ -68,7 +81,8 @@
                     <div class="form-group{{ $errors->has('subject') ? ' has-error' : '' }}">
                         <div class="ccfield-prepend">
                             <span class="ccform-addon"><i class="fa fa-info fa-2x"></i></span>
-                            <input type="text" class="ccformfield" id="subject" placeholder="Onderwerp" name="subject"
+                            <input type="text" class="ccformfield" id="subject" placeholder="Onderwerp"
+                                   name="subject"
                                    value="{{ old('subject') }}" required>
                         </div>
                         @if ($errors->has('subject'))
@@ -80,7 +94,8 @@
                     <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
                         <div class="ccfield-prepend">
                             <span class="ccform-addon"><i class="fa fa-comment fa-2x"></i></span>
-                            <textarea name="message" class="ccformfield" placeholder="Bericht" id="message" cols="30"
+                            <textarea name="message" class="ccformfield" placeholder="Bericht" id="message"
+                                      cols="30"
                                       rows="10" required>{{ old('message') }}</textarea>
                         </div>
                     </div>
