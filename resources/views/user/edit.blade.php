@@ -8,7 +8,7 @@
             @section ('cotable_panel_title','Gebruikers aanpassen')
             @section ('cotable_panel_body')
 
-                <form action="{{ route('dashboard.users.update', $user) }}" method="post">
+                <form action="{{ route('users.update', $user) }}" method="post">
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
 

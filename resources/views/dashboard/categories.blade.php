@@ -10,7 +10,7 @@
                 <div class="row" style="margin-bottom: 2%;">
                     <div class="col-sm-6 col-sm-offset-3">
                         <div id="imaginary_container">
-                            <form action="{{ route('dashboard.categories') }}" method="get">
+                            <form action="{{ route('categories.index') }}" method="get">
                                 <div class="input-group">
                                     <input type="text" name="q" class="form-control" placeholder="Zoeken" value="{{ request('q') }}">
                                     <span class="input-group-btn">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="{{ route('dashboard.categories.create') }}" class="btn- btn-link">Maak een categorie aan</a>
+                <a href="{{ route('categories.create') }}" class="btn- btn-link">Maak een categorie aan</a>
                 <table class="table">
                     <tr>
                         <th>
@@ -37,17 +37,17 @@
                                 {{ $category->name }}
                             </td>
                             <td>
-                                <a href="{{ route('dashboard.categories.edit', $category) }}">
+                                <a href="{{ route('categories.edit', $category) }}">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
-                                <a href="{{ route('dashboard.categories.destroy', $category) }}"
+                                <a href="{{ route('categories.destroy', $category) }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('delete-category').submit();">
                                             <span class="glyphicon glyphicon-trash text-danger"
                                                   aria-hidden="true"></span>
                                 </a>
 
-                                <form id="delete-category" action="{{ route('dashboard.categories.destroy', $category) }}"
+                                <form id="delete-category" action="{{ route('categories.destroy', $category) }}"
                                       method="POST">
 
                                     {{ method_field('DELETE') }}

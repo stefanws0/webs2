@@ -1,9 +1,8 @@
 <?php
-View::creator('layouts.nav', function($view)
-{
+View::creator('layouts.nav', function ($view) {
     $view->with('items', \App\Models\Navigation::all());
 });
-View::creator('', function($view) {
+View::creator('', function ($view) {
     $view->with('items', \App\Models\Navigation::all());
 });
 
@@ -11,6 +10,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+<<<<<<< HEAD
 Auth::routes();
 Route::group(['prefix' => 'dashboard'], function() {
     Route::get('/', 'Dashboard\DashboardController@index')->name('dashboard.index');
@@ -33,6 +33,17 @@ Route::group(['prefix' => 'dashboard'], function() {
     Route::get('/category/create', 'Dashboard\CategoryController@create')->name('dashboard.categories.create');
     Route::post('/category/store', 'Dashboard\CategoryController@store')->name('dashboard.categories.store');
 
+=======
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['prefix' => 'dashboard'], function () {
+        Route::resource('users', 'Dashboard\UserController', ['except' => ['show']]);
+        Route::get('/', 'Dashboard\DashboardController@index')->name('dashboard.index');
+        Route::resource('products', 'Dashboard\ProductController');
+        Route::get('/orders', 'Dashboard\OrderController@index')->name('dashboard.orders');
+        Route::delete('/orders/{order}/delete', 'Dashboard\OrderController@destroy')->name('dashboard.orders.destroy');
+        Route::resource('categories', 'Dashboard\CategoryController', ['except' => ['show']]);
+    });
+>>>>>>> d38b415caca5d44ef56392682a2885956e125422
 });
 Route::get('/add-to-cart/{id}', 'ProductsController@getAddToCart')->name('products.addToCart');
 Route::get('/reduce/{id}', 'ProductsController@getReduceByOne')->name('products.reduceByOne');
@@ -46,6 +57,5 @@ Route::post('/products/', 'ProductsController@store');
 Route::post('/products/{product}/reviews', 'ReviewController@store');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/contact', 'ContactController@index')->name('contact.index');
 Route::post('/contact/email', 'ContactController@store')->name('contact.store');

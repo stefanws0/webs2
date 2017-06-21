@@ -37,7 +37,7 @@ class ContactConfirmation extends Mailable
         );
 
         return $this->from("hello@nationaaljeugdontbijt.nl")
-            ->subject('Nationaal Jeugd Ontbijt Bevestiging: ' . $this->data['subject'])
+            ->subject('retroChick Bevestiging: ' . $this->data['subject'])
             ->view('email.contactConfirmationClean')
             ->with([
                 'inputs' => $input,
