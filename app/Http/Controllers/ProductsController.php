@@ -58,7 +58,10 @@ class ProductsController extends Controller
         $cart = new Cart($oldCart);
         $cart->add($product, $product->id);
         $request->session()->put('cart', $cart);
-        return redirect()->route('products.index');
+        $category = $product->foo->id;
+        $products = Product::where('category_id', $category)->get();
+        $categoryName = Category::where('id', $category)->value('name');
+        return view('products.index', compact(['products', 'categoryName' ]));
     }
     public function getReduceByOne($id)
     {
@@ -106,6 +109,6 @@ class ProductsController extends Controller
 
         Auth::user()->orders()->save($order);
         Session::forget('cart');
-        return redirect()->route('products.index');
+        return view('welcome');
     }
 }

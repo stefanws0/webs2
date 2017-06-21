@@ -46,7 +46,7 @@
                     @if(Auth::user()->isAdmin)
                         <a class="dropdown-item" href="/dashboard"> Dashboard</a>
                     @else
-                        <a class="dropdown-item" href="shopping-cart"> Winkelwagen {{Session::has('cart') ? Session::get('cart')->totalQty : ''}}</a>
+                        <a class="dropdown-item" href="{{route('products.shoppingCart')}}"> Winkelwagen {{Session::has('cart') ? Session::get('cart')->totalQty : ''}}</a>
                     @endif
                     <a class="dropdown-item" href="{{ url('/logout') }}"
                        onclick="event.preventDefault();

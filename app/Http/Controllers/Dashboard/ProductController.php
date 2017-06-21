@@ -89,7 +89,7 @@ class ProductController extends Controller
     }
 
     public function destroy(Product $product){
-        dd($product);
+
         $product->delete();
         $products = Product::orderBy('name')->paginate(15);
         return view('dashboard.products', compact('products'));
