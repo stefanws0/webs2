@@ -35,7 +35,7 @@
                     </div>
                     <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                         <label for="image">Foto</label>
-                        <input type="file" class="form-control" id="image" name="image"
+                        <input type="file" class="form-control" id="image" name="image" accept="image/*"
                                value="{{ old('image') }}" required>
 
                         @if ($errors->has('image'))

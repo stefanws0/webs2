@@ -2,14 +2,15 @@
 
 @section('content')
     <div class="container">
-        <h4>{{$product->foo->name . " > " . $product->name }}</h4>
+        <p>
+            <a href="/">Home</a> > <a href="/products/?category={{$product->foo->id}}">{{$product->foo->name}}</a> > {{$product->name}}
+        </p>
         <hr>
         <p>
             <h4>{{ $product->name }}</h4>
             <h6>{{ $product->description }}</h6>
         </p>
         <p>Dit product kost: €{{ $product->price }},-
-            <button type="submit" class="btn btn-primary pull-right">Buy</button>
         </p>
         <hr>
         <div class="reviews">
@@ -31,20 +32,20 @@
 
         {{-- Add a comment --}}
         <hr>
-
+        <h3>plaats hier je review</h3>
         <div class="card">
             <div class="card-block">
                 <form method="POST", action="/products/{{$product->id}}/reviews">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <input type="text" placeholder="title" class="form-control" id="title" name="title" required>
+                        <input type="text" placeholder="Titel" class="form-control" id="title" name="title" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Your message here" class="form-control" id="body" name="body" required>
+                        <input type="text" placeholder="Bericht" class="form-control" id="body" name="body" required>
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Publish</button>
+                        <button type="submit" class="btn btn-primary">Publiceren</button>
                     </div>
                 </form>
             </div>

@@ -11,7 +11,7 @@
                 @endif</h1>
             <p class="lead text-muted">These are the products our webshop is going to sell</p>
             <p>
-            <form action="{{ route('products.index') }}" method="get">
+            <form action="/products/" method="get">
                 <div class="input-group">
                     <input type="text" style="margin: 0px;" name="q" class="form-control" placeholder="Zoeken" value="{{ request('q') }}">
                     <span class="input-group-btn">
@@ -35,7 +35,7 @@
                                     </div>
                                 </div>
                                 <div class="card-block">
-                                    <img style="height: 100px" src="{{asset("storage/$product->id.jpeg")}}" />
+                                    <img src="{{asset('/images/' . $product->id) . '.jpg'}}" alt="profile Pic" height="200" width="300" />
                                     <p></p>
 
                                     <p class="card-text text-center">{{ $product->description }}</p>
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="pull-left visible-lg-inline-block">
-                                        ${{$product->price}}
+                                        €{{$product->price}}
                                     </div>
                                     <a href="/products/{{$product->id}}" class="btn btn-primary pull-left">
 

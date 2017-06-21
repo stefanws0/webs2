@@ -9,7 +9,7 @@ View::creator('', function($view) {
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 Route::group(['prefix' => 'dashboard'], function() {
@@ -25,7 +25,7 @@ Route::group(['prefix' => 'dashboard'], function() {
     Route::get('/product/create', 'Dashboard\ProductController@create')->name('dashboard.products.create');
     Route::post('/product/store', 'Dashboard\ProductController@store')->name('dashboard.products.store');
     Route::get('/orders', 'Dashboard\OrderController@index')->name('dashboard.orders');
-    Route::delete('/orders/{order}/delete', 'Dashboard\OrderController@destroy')->name('dashboard.orders.destroy');
+    Route::delete('/orders/delete/{order}', 'Dashboard\OrderController@destroy')->name('dashboard.orders.destroy');
     Route::get('/categories', 'Dashboard\CategoryController@index')->name('dashboard.categories');
     Route::get('/categories/{category}/edit', 'Dashboard\CategoryController@edit')->name('dashboard.categories.edit');
     Route::put('/category/{category}/update', 'Dashboard\CategoryController@update')->name('dashboard.categories.update');

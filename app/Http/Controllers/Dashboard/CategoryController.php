@@ -69,7 +69,7 @@ class CategoryController extends Controller
         return redirect()->route('dashboard.products');
     }
 
-    public function delete(Category $category){
+    public function destroy(Category $category){
         $category->delete();
         $categories = Category::orderBy('name')->paginate(15);
         return view('dashboard.categories', compact('categories'));

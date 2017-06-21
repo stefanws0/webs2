@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Carousel Template for Bootstrap</title>
+    <title>RetroChic</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -27,7 +27,7 @@
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-            <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+            <img class="first-slide" src="{{asset('/images/front1.jpg')}}" alt="First slide">
             <div class="container">
                 <div class="carousel-caption d-none d-md-block text-left">
                     <h1>Nu er is een winkel geopend in Den Haag</h1>
@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+            <img class="second-slide" src="{{asset('/images/front2.jpg')}}" alt="Second slide">
             <div class="container">
                 <div class="carousel-caption d-none d-md-block">
                     <h1>Nu ook Armani te koop bij RetroChic</h1>
@@ -46,10 +46,10 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+            <img class="third-slide" src="{{asset('/images/front3.jpg')}}" alt="Third slide">
             <div class="container">
                 <div class="carousel-caption d-none d-md-block text-right">
-                    <h1>We verkopen nu ook Schoene</h1>
+                    <h1>We verkopen nu ook Schoenen</h1>
                     <p>Schoenen zijn de eerste 2 weken maar voor de helft van de prijs</p>
 
                 </div>
@@ -73,18 +73,16 @@
         <div class="col-lg-1 ">
         </div>
         <div class="col-lg-4 ">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <img class="rounded-circle" src="{{asset('/images/Stefan.jpg')}}" alt="Generic placeholder image" width="140" height="140">
             <h2>Stefan Willems</h2>
             <p>Ik ben Stefan Willems en ik ben een informatica student aan de Avans Den Bosch</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-2 ">
         </div>
         <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <img class="rounded-circle" src="{{asset('/images/Jonathan.jpg')}}" alt="Generic placeholder image" width="140" height="140">
             <h2>Jonathan Hollander</h2>
             <p>Ik ben Jonathan Hollander en ik ben een informatica student aan de Avans Den Bosch</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 

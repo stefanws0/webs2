@@ -12,7 +12,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url ('/dashboard') }}">Nationaal Jeugd Ontbijt</a>
+                <a class="navbar-brand" href="{{ url ('/dashboard') }}">Retrochic</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -47,7 +47,7 @@
                             <a href="{{ route('dashboard.orders') }}"><i class="glyphicon glyphicon-check"></i> Orders</a>
                         </li>
                         <li {{ (request()->is('*products') ? 'class="active"' : '') }}>
-                            <a href="{{ route('products.index') }}"><i class="glyphicon glyphicon-backward"></i>
+                            <a href="{{ route('welcome') }}"><i class="glyphicon glyphicon-backward"></i>
                                 Terug naar Site</a>
                         </li>
                     </ul>

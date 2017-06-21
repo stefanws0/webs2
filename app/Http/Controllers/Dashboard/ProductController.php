@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
+use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -27,6 +28,7 @@ class ProductController extends Controller
             $products = Product::orderBy('name')->paginate(15);
         }
 
+
         return view('dashboard.products', compact('products'));
     }
 
@@ -45,7 +47,15 @@ class ProductController extends Controller
                 'price' => request('price'),
                 'category_id' => request('category_id')
             ]);
-            Storage::put($product->id . '.jpg', file_get_contents(request('image')->getRealPath()));
+        if(Input::file())
+        {
+            $image = Input::file('image');
+            $filename = $product->id . '.' . $image->getClientOriginalExtension();
+            $path = public_path('images/' . $filename);
+            $path = preg_replace('/\\.[^.\\s]{3,4}$/', '', $path);
+            $path = $path . '.jpg';
+            Image::make($image->getRealPath())->resize(200, 300)->encode('jpg', 80)->save($path);
+        }
 
 
         return redirect()->route('dashboard.products');
@@ -78,7 +88,8 @@ class ProductController extends Controller
         return redirect()->route('dashboard.products');
     }
 
-    public function delete(Product $product){
+    public function destroy(Product $product){
+        dd($product);
         $product->delete();
         $products = Product::orderBy('name')->paginate(15);
         return view('dashboard.products', compact('products'));
