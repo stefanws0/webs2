@@ -37,9 +37,6 @@
                                 {{ $category->name }}
                             </td>
                             <td>
-                                <a href="{{ route('categories.edit', $category) }}">
-                                    <span class="glyphicon glyphicon-pencil"></span>
-                                </a>
                                 <a href="{{ route('categories.destroy', $category) }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('delete-category-{{ $category->id }}').submit();">

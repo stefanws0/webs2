@@ -10,7 +10,7 @@
                 <div class="row" style="margin-bottom: 2%;">
                     <div class="col-sm-6 col-sm-offset-3">
                         <div id="imaginary_container">
-                            <form action="{{ route('products.index') }}" method="get">
+                            <form action="{{ route('dashboard.products.index') }}" method="get">
                                 <div class="input-group">
                                     <input type="text" name="q" class="form-control" placeholder="Zoeken" value="{{ request('q') }}">
                                     <span class="input-group-btn">
