@@ -42,12 +42,12 @@
                                 </a>
                                 <a href="{{ route('categories.destroy', $category) }}"
                                    onclick="event.preventDefault();
-                                                     document.getElementById('delete-category').submit();">
+                                                     document.getElementById('delete-category-{{ $category->id }}').submit();">
                                             <span class="glyphicon glyphicon-trash text-danger"
                                                   aria-hidden="true"></span>
                                 </a>
 
-                                <form id="delete-category" action="{{ route('categories.destroy', $category) }}"
+                                <form id="delete-category-{{ $category->id }}" action="{{ route('categories.destroy', $category) }}"
                                       method="POST">
 
                                     {{ method_field('DELETE') }}

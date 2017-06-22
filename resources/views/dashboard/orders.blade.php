@@ -54,12 +54,12 @@
                                 </a>
                                 <a href="{{ route('dashboard.orders.destroy', $order) }}"
                                    onclick="event.preventDefault();
-                                                     document.getElementById('delete-order').submit();">
+                                                     document.getElementById('delete-order-{{ $order->id }}').submit();">
                                             <span class="glyphicon glyphicon-trash text-danger"
                                                   aria-hidden="true"></span>
                                 </a>
 
-                                <form id="delete-order" action="{{ route('dashboard.orders.destroy', $order) }}"
+                                <form id="delete-order-{{ $order->id }}" action="{{ route('dashboard.orders.destroy', $order) }}"
                                       method="POST">
 
                                     {{ method_field('DELETE') }}

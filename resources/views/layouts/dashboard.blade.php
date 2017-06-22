@@ -12,11 +12,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-<<<<<<< HEAD
                 <a class="navbar-brand" href="{{ url ('/dashboard') }}">Retrochic</a>
-=======
-                <a class="navbar-brand" href="{{ url ('/dashboard') }}">RetroChic</a>
->>>>>>> d38b415caca5d44ef56392682a2885956e125422
             </div>
             <!-- /.navbar-header -->
 
@@ -42,7 +38,7 @@
                             <a href="{{ route('users.index') }}"><i class="glyphicon glyphicon-user"></i> Users</a>
                         </li>
                         <li {{ (request()->is('*products') ? 'class="active"' : '') }}>
-                            <a href="{{ route('products.index') }}"><i class="glyphicon glyphicon-th-list"></i> Products</a>
+                            <a href="{{ route('dashboard.products.index') }}"><i class="glyphicon glyphicon-th-list"></i> Products</a>
                         </li>
                         <li {{ (request()->is('*categories') ? 'class="active"' : '') }}>
                             <a href="{{ route('categories.index') }}"><i class="glyphicon glyphicon-sort"></i> Categories</a>

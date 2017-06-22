@@ -41,12 +41,12 @@
                                 </a>
                                 <a href="{{ route('users.destroy', $user) }}"
                                    onclick="event.preventDefault();
-                                                     document.getElementById('delete-user').submit();">
+                                                     document.getElementById('delete-user-{{ $user->id }}').submit();">
                                             <span class="glyphicon glyphicon-trash text-danger"
                                                   aria-hidden="true"></span>
                                 </a>
 
-                                <form id="delete-user" action="{{ route('users.destroy', $user) }}"
+                                <form id="delete-user-{{ $user->id }}" action="{{ route('users.destroy', $user) }}"
                                       method="POST">
 
                                     {{ method_field('DELETE') }}

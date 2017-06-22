@@ -7,7 +7,7 @@
         <div class="col-sm-8">
             @section ('cotable_panel_title','Maak Categorieen')
             @section ('cotable_panel_body')
-                <form action="{{ route('dashboard.categories.store') }}" method="post">
+                <form action="{{ route('categories.store') }}" method="post">
                     {{ csrf_field() }}
 
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="{{ route('products.create') }}" class="btn- btn-link">Maak een product</a>
+                <a href="{{ route('dashboard.products.create') }}" class="btn- btn-link">Maak een product</a>
                 <br>
                 <table class="table">
                     <tr>
@@ -50,17 +50,17 @@
                                 {{ $product->price }}
                             </td>
                             <td>
-                                <a href="{{ route('products.edit', $product) }}">
+                                <a href="{{ route('dashboard.products.edit', $product) }}">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
-                                <a href="{{ route('products.destroy', $product) }}"
+                                <a href="{{ route('dashboard.products.destroy', $product) }}"
                                    onclick="event.preventDefault();
-                                                     document.getElementById('delete-product').submit();">
+                                                     document.getElementById('delete-product-{{ $product->id }}').submit();">
                                             <span class="glyphicon glyphicon-trash text-danger"
                                                   aria-hidden="true"></span>
                                 </a>
 
-                                <form id="delete-product" action="{{ route('products.destroy', $product) }}"
+                                <form id="delete-product-{{ $product->id }}" action="{{ route('dashboard.products.destroy', $product) }}"
                                       method="POST">
 
                                     {{ method_field('DELETE') }}

@@ -16,7 +16,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'dashboard'], function () {
         Route::resource('users', 'Dashboard\UserController', ['except' => ['show']]);
         Route::get('/', 'Dashboard\DashboardController@index')->name('dashboard.index');
-        Route::resource('products', 'Dashboard\ProductController');
+        Route::resource('products', 'Dashboard\ProductController', ['as' => 'dashboard']);
         Route::get('/orders', 'Dashboard\OrderController@index')->name('dashboard.orders');
         Route::delete('/orders/{order}/delete', 'Dashboard\OrderController@destroy')->name('dashboard.orders.destroy');
         Route::resource('categories', 'Dashboard\CategoryController', ['except' => ['show']]);
