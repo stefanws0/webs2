@@ -41,7 +41,7 @@ class CategoryController extends Controller
             'navigation_id' => 2
         ]);
 
-        return redirect()->route('dashboard.products');
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -66,7 +66,7 @@ class CategoryController extends Controller
     {
         $request->persist();
 
-        return redirect()->route('dashboard.products');
+        return redirect()->route('categories.index');
     }
 
     public function destroy(Category $category){

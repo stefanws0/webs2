@@ -50,7 +50,7 @@ class UserController extends Controller
     {
         $request->persist();
 
-        return redirect()->route('dashboard.users');
+        return redirect()->route('users.index');
     }
 
     public function destroy(User $user){
