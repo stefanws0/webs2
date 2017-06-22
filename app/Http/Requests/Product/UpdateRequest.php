@@ -27,6 +27,7 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'required|min:2|max:100',
             'description' => 'required|min:20|max:100',
+            'category_id' => 'required',
             'price' => 'required|integer|min:1'
         ];
     }
@@ -38,6 +39,6 @@ class UpdateRequest extends FormRequest
     {
         $user = $this->route('product');
 
-        $user->update($this->only('name', 'description', 'price'));
+        $user->update($this->only('name', 'description', 'price', 'category_id'));
     }
 }
