@@ -58,7 +58,7 @@ class ProductController extends Controller
         }
 
 
-        return redirect()->route('dashboard.products');
+        return redirect()->route('dashboard.products.index');
     }
 
     /**
@@ -85,14 +85,14 @@ class ProductController extends Controller
     {
         $request->persist();
 
-        return redirect()->route('dashboard.products');
+        return redirect()->route('dashboard.products.index');
     }
 
     public function destroy(Product $product){
 
         $product->delete();
         $products = Product::orderBy('name')->paginate(15);
-        return view('dashboard.products', compact('products'));
+        return view('dashboard.products.index', compact('products'));
     }
 }
 {
